@@ -1,0 +1,43 @@
+/*
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 180;
+    /*background-image: url(https://5287aa00874a313e299d-1850966fc307ff23e1e789aeafd2476b.
+    ssl.cf5.rackcdn.com/PostImagem/42240/matthias-kinsella-9e4pcscldyy-unsplash.jpg);
+*/
+    /*o CSS utiliza /* esse sinal para comentários */
+    /*background-color: aliceblue;
+
+}/*
+h3{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+h1{
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+*/
+
+@media screen{
+    body{
+        background-color: lightblue;
+    }
+}
+
+@media (min-width: 768px){
+    body{
+        background-color: lightcoral;
+    }
+}
+
+@media (min-width:992px){
+    body{
+        background-color: lightgreen;
+    }
+}

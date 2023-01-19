@@ -1,0 +1,109 @@
+body{
+    background-color: rgb(34,34,34);
+    color: whitesmoke;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+title{
+    flex-direction: column;
+    line-height: 10px;
+}
+
+li{
+    display: inline-block; /*Tudo fica numa linha só sem se mexer*/
+    margin: 30px; /*margem para cada elemento*/
+}
+
+h1{
+    font-weight: 100;
+}
+
+h2{
+    font-size: 50px;
+    line-height: 10px;
+    margin-top: 40px;
+    margin-bottom: 0%;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    margin-top: 70px;
+}
+
+span{
+    color:#ff029e;
+}
+
+p{
+    line-height: 20p;
+    max-width: 500px;
+    margin-top: 50px;
+}
+
+img{
+    width: 90%;
+    /*height: 90%;*/
+    display: block;
+    margin-left: auto; /* centraliza */
+    margin-right: auto;
+}
+
+a{
+    color:whitesmoke;
+}
+
+a:hover{ /*ações no CSS*/
+    color:#ff029e;
+    transition: 0.3s;
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+#hack{
+    border: 2px solid #ff029e;
+    padding: 10px;
+    border-radius: 15px; /* arredonda a borda*/
+
+}
+
+#hack:hover{
+    background-color: #ff029e;
+    color:white;
+}
+
+input{
+    margin-top: 20px;
+    height: 30px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+}
+
+form [type=submit]{ /*estiliza todo type submit no projeto*/
+    height: 50px;
+    width: 50%;
+    background-color: #ff029e;
+    color: white;
+    font-weight: bold;
+}
+
+form [type=submit]:hover{
+    cursor: pointer; 
+}
