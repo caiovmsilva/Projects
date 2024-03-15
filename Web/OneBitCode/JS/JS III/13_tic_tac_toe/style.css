@@ -1,0 +1,75 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main{
+    max-width: 70rem;
+    margin: 5rem 20rem;
+    background-color: lightgray;
+    height: 36rem;
+}
+
+header{
+    margin: 1.5rem auto;
+    text-align: center;
+    max-width: 40rem;
+}
+
+h1{
+    background-color: antiquewhite;
+    display: inline-flex;
+    padding: 10px 20px;
+    margin: auto;
+}
+
+#playerNames{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0px 0px;
+}
+
+#turnSection{
+    display: flex;
+    /* padding: 10px 20px; */
+    margin: 1.5rem;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#boardSection{
+    display: flex;
+    /* margin: auto; */
+    flex-direction: row;
+    justify-content: center;
+}
+
+#gameBoard{
+    background-color: #232323;
+    display: grid;
+    grid-template-columns: 6rem 6rem 6rem;
+    grid-template-rows: 6rem 6rem 6rem;
+    gap: .5rem;
+    margin-bottom: 1.5rem;
+    max-width: 19rem;
+}
+
+#gameBoard span{
+    background-color: antiquewhite;
+    display: grid;
+    place-content: center;  /*Easy way of centralizing any content on the span */
+    font-size: 5rem;
+}
+
+#gameBoard span.win{
+    background-color: rgb(42, 201, 148);
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
