@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <script src="https://cdn.jsdelivr.net/npm/ol@v7.4.0/dist/ol.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.4.0/ol.css">
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<!--   <script src="https://cdn.jsdelivr.net/npm/canvg@1.5.3/dist/canvg.min.js"></script> -->
+  <link rel="stylesheet" href="style.css">
+  <title>Paulicinha</title>
+</head>
+<body>
+  <header>
+    <section id="logo">
+      <img src="images/logo2.png">
+    </section>
+    <nav id="header_navbar">
+      <ul class="navbar_constrains">
+        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Tabelão</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link nav-link-active">Mapa</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Layers</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Sobre</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Contatos</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="map"></div>
+    <img id="logo-image" src="images/logo2.png">
+    <section id="export">
+      <button id="capture-button" onclick="toogleModal()">Export</button>
+    </section>
+    
+
+    <!-- Modal com opções de formato -->
+    <section id="modal" class="modal">
+      <div class="modal-content">
+<!--         <span class="close" onclick="toggleModal()">&times;</span>-->
+        <h2>Escolha o formato:</h2>
+        <button class="format-button" onclick="captureScreen('png')">PNG</button>
+        <button class="format-button" onclick="captureScreen('jpeg')">JPEG</button>
+        <button class="format-button" onclick="captureScreen('svg')">SVG</button>
+        <!-- <button class="format-button" onclick="captureScreen('pdf')">PDF</button> -->
+      </div>
+
+    </section>
+
+    <script>
+      // Variáveis globais
+      var map;
+
+      // Inicialização do mapa
+      function initializeMap() {
+        map = new ol.Map({
+          target: 'map',
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          view: new ol.View({
+            center: ol.proj.fromLonLat([-46.6334, -23.5507]), // Coordenadas de exemplo (Pleasanton, CA)
+            zoom: 14.5
+          })
+        });
+      }
+
+      // Função para abrir o modal
+      function toogleModal() {
+        var modal = document.getElementById('modal');
+        if (modal.style.display === 'block') {
+          modal.style.display = 'none';
+        }
+        else{
+          modal.style.display = 'block';
+        }
+      }
+
+      // Função para capturar a tela
+      function captureScreen(format) {
+
+        // Aumentar a resolução do canvas
+        var canvas = document.createElement('canvas');
+        var scale = 4; // Fator de escala (aumenta a resolução em 2 vezes)
+        canvas.width = map.getSize()[0] * scale;
+        canvas.height = map.getSize()[1] * scale;
+        canvas.style.width = map.getSize()[0] + 'px';
+        canvas.style.height = map.getSize()[1] + 'px';
+
+        var options = {
+          scale: scale, // ajusta a escala
+          canvas: canvas
+        };
+
+        // Ocultar elementos indesejados
+
+        // Oculta as atribuições do OpenLayers da captura
+        var attribution = document.getElementsByClassName('ol-attribution');
+        if (attribution.length > 0) {
+          attribution[0].style.display = 'none';
+        }
+
+        // Oculta o elemento de zoom da captura
+        var zoom = document.getElementsByClassName('ol-zoom')
+        if (zoom.length > 0) {
+          zoom[0].style.display = 'none';
+        }
+
+        // Exibir a imagem da logo
+        var logoImage = document.getElementById('logo-image');
+        logoImage.style.display = 'block';
+      
+        document.getElementById('map').appendChild(logoImage);
+
+        html2canvas(document.getElementById('map'), options).then(function(canvas) {
+          // Exibir elementos ocultos novamente
+          if (attribution.length > 0) {
+            attribution[0].style.display = 'block';
+          }
+
+          if (zoom.length > 0) {
+            zoom[0].style.display = 'block';
+          }
+
+          // Ocultar a imagem da logo
+          logoImage.style.display = 'none';
+
+          // Executar ação de acordo com o formato selecionado
+          switch (format) {
+            case 'png':
+              // Salvar a imagem capturada como PNG
+              saveAsImage(canvas, 'image/png', 'captured_image.png');
+              break;
+            case 'jpeg':
+              // Salvar a imagem capturada como JPEG
+              saveAsImage(canvas, 'image/jpeg', 'captured_image.jpeg');
+              break;
+            /* case 'pdf':
+              // Gerar um PDF com a imagem capturada
+              generatePDF(canvas);
+              break; */
+            default:
+              break;
+          }
+
+          // Fechar o modal 
+          toogleModal();
+
+
+        });
+      }
+
+      // Função para salvar a imagem capturada
+      function saveAsImage(canvas, type, filename) {
+        var link = document.createElement('a');
+        link.href = canvas.toDataURL(type);
+        link.download = filename;
+        link.click();
+      }
+
+      /* // Função para gerar um PDF com a imagem capturada
+      function generatePDF(canvas) {
+        // Implemente aqui a lógica para gerar um PDF com a imagem capturada
+        // Você pode usar bibliotecas como jsPDF ou pdfmake para criar o PDF
+      } */
+
+      // Inicialização do mapa ao carregar a página
+      window.onload = initializeMap;
+    </script>
+  </main>
+  
+</body>
+</html>
