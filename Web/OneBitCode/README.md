@@ -7,4 +7,6 @@ Each folder has some exercises I did while studing about the following subjects:
 - HTML5
 - Javascript
   -  JS I has some simples JS exercises
-  -  JS II has some 
+  -  JS II has some a bit more complicated JS exercises
+  -  JS III has some DOM exercises and a few small projects
+
