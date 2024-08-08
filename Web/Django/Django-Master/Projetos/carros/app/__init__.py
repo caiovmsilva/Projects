@@ -1,0 +1,1 @@
+#serve pra indicar que a pasta raiz (app) é um pacote de código em python
