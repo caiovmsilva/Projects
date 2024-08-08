@@ -11,3 +11,8 @@ class Car(models.Model):
     factory_year = models.IntegerField(blank=True, null=True)
     model_year = models.IntegerField(blank=True, null=True)
     value = models.FloatField(blank=True, null=True)
+
+    #Função padrão de Model -> substituir padrão pelo nome do model
+    #Ao invés de ser car object(...), fica o nome do modelo do carro
+    def __str__(self):
+        return self.model
