@@ -1,6 +1,10 @@
 from django.contrib import admin
 #import da class Car do arquivo models dentro da pasta cars
-from cars.models import Car
+from cars.models import Car, Brand
+
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
 
 #classe própria do Django para a tabela Car
 class CarAdmin(admin.ModelAdmin):
@@ -10,3 +14,6 @@ class CarAdmin(admin.ModelAdmin):
 
 #Resgistra na tabela Car as configs de CarAdmin
 admin.site.register(Car, CarAdmin)
+
+#Registra na tabela Brand as configs de BrandAdmin
+admin.site.register(Brand, BrandAdmin)
