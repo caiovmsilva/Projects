@@ -9,8 +9,12 @@
     como os dados dinâmicos vindos do banco de dados -->
     {% block content %}
         <body>
-            <!-- para mostrar o valor de model, temos que chamar ela desse jeito -->
-            <h3>Carro 1: {{ cars.model }}</h3>
+            {% for car in cars %}
+
+                {# para mostrar o valor de model ou brand, temos que chamar ela desse jeito #}
+               
+                <h3> {{ car.brand }} - {{ car.model }} - {{ car.factory_year}}</h3>
+            {% endfor %}
         </body>
     {% endblock %}
 </html>
