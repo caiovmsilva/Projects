@@ -10,7 +10,11 @@ class BrandAdmin(admin.ModelAdmin):
 class CarAdmin(admin.ModelAdmin):
     #configurações herdadas de ModelAdmin
     list_display = ('model', 'brand', 'factory_year', 'model_year', 'value')
-    search_fields = ('model', 'brand')
+    #Para usar um obj do tipo ForeignKey  para busca, é preciso passar 
+    #esse o campo da tabela correspondente (nesse caso brand) que vai ser usado
+    #para a busca (nesse caso a chave primária 'name' de brand).
+    #Isso é feito usando o ('__') entre o modelo relacionado e o campo buscado.
+    search_fields = ('model','brand__name')
 
 #Resgistra na tabela Car as configs de CarAdmin
 admin.site.register(Car, CarAdmin)

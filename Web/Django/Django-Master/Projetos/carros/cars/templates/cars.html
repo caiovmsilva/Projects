@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meus Carros</title>
+    </head>
+    <!-- Dentro desse template é possível indicar pro Django que podemos chamar variáveis 
+    como os dados dinâmicos vindos do banco de dados -->
+    {% block content %}
+        <body>
+            <!-- para mostrar o valor de model, temos que chamar ela desse jeito -->
+            <h3>Carro 1: {{ cars.model }}</h3>
+        </body>
+    {% endblock %}
+</html>
