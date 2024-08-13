@@ -5,10 +5,13 @@ from cars.models import Car
 #render sempre pede request, por padrão
 #esse request vem do usuário
 def cars_view(request):
-    #cars = Car.objects.all() #equivalente a Select * From Cars
-    #busca qualquer model que contenha a string 'Chevette'
-    #Essa busca não é case sensitive, mas caracteres especiais devem estar presentes
-    cars = Car.objects.filter(model__contains='Chevette')
+    #-model -> ordem inversa 
+    cars = Car.objects.all().order_by('model')
+    search = request.GET.get('search')
+    
+    if search:
+        #icontains ignora upercase ou lowercase, considera tudo igualmente
+        cars = Car.objects.filter(model__icontains=search)
 
     return render(
         request, 
