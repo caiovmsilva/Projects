@@ -4,6 +4,16 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %} {# proteção contra alguns tipos de ataque da web#}
         
-        {{ new_car_form }}
+        {% comment %}
+        {{ new_car_form.as_p }}
+        {# as_p -> renderizar como parágrafo #}
+        {% endcomment %}
+            
+        <table>
+            {{ new_car_form.as_table}}  
+            {# as_table -> renderiza como tabela, se dentro de uma tag table #}
+        </table>
+
+        <input type="submit" value="Cadastrar" class="btn btn-primary">
     </form>
 {% endblock%}
