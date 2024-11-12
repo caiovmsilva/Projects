@@ -1,7 +1,7 @@
 #from django.http import HttpResponse -> caso não houvesse tamplates
 from django.shortcuts import render, redirect
 from cars.models import Car
-from cars.forms import CarForm
+from cars.forms import CarModelForm
 
 #render sempre pede request, por padrão
 #esse request vem do usuário
@@ -25,14 +25,14 @@ def cars_view(request):
 
 def new_car_view(request):
     if request.method == "POST":
-        new_car_form = CarForm(request.POST, request.FILES) 
+        new_car_form = CarModelForm(request.POST, request.FILES) 
         #request.POST -> recebe todos os dados preenchidos pelo usuário
         #request.FILES -> recebe arquivos 
         if new_car_form.is_valid():
             new_car_form.save()
             return redirect('cars_list')
     else:
-        new_car_form = CarForm() #criando formulário vazio
+        new_car_form = CarModelForm() #criando formulário vazio
         #renderiza para o usuário o arquivo new_car.html, passando para o template como variável
         #o formulário new_car_form vazio (criado acima)
 
