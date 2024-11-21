@@ -29,7 +29,7 @@ def new_car_view(request):
         #request.POST -> recebe todos os dados preenchidos pelo usuário
         #request.FILES -> recebe arquivos 
         if new_car_form.is_valid():
-            new_car_form.save()
+            new_car_form.save() # tá ligado a um modelo Car (não precisa criar um método save())
             return redirect('cars_list')
     else:
         new_car_form = CarModelForm() #criando formulário vazio
