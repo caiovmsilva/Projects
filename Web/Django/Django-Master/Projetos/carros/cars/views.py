@@ -17,7 +17,7 @@ def cars_view(request):
     return render(
         request, 
         'cars.html', 
-        #dados sendo passadaos para o template
+        #dados sendo passados para o template
         #esta seria a lista dos carros mostradas para o usuário
         {'cars': cars}
     )
@@ -36,4 +36,4 @@ def new_car_view(request):
         #renderiza para o usuário o arquivo new_car.html, passando para o template como variável
         #o formulário new_car_form vazio (criado acima)
 
-    return render(request, 'new_car.html', { 'new_car_form': new_car_form })
+    return render(request, 'new_car.html', { 'new_car_form': new_car_form })    
