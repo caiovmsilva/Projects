@@ -25,7 +25,7 @@ class Car(models.Model):
     value = models.FloatField(blank=True, null=True)
     
     #Django usa a bib Pillow pra ter a dependência ImageField
-    photo = models.ImageField(upload_to='cars/', blank=True, null=True)
+    photo = models.ImageField(upload_to='cars/', blank=True, null=True, default='cars/default_car.png')
 
     #Função padrão de Model -> substituir padrão pelo nome do model
     #Ao invés de ser car object(...), fica o nome do modelo do carro
