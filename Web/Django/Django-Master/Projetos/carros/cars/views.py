@@ -2,25 +2,29 @@
 from django.shortcuts import render, redirect
 from cars.models import Car
 from cars.forms import CarModelForm
+from django.views import View
 
-#render sempre pede request, por padrão
-#esse request vem do usuário
-def cars_view(request):
-    #-model -> ordem inversa 
-    cars = Car.objects.all().order_by('model')
-    search = request.GET.get('search')
-    
-    if search:
-        #icontains ignora upercase ou lowercase, considera tudo igualmente
-        cars = Car.objects.filter(model__icontains=search)
+class CarsView(View):
 
-    return render(
-        request, 
-        'cars.html', 
-        #dados sendo passados para o template
-        #esta seria a lista dos carros mostradas para o usuário
-        {'cars': cars}
-    )
+    #render sempre pede request, por padrão
+    #esse request vem do usuário
+    def get(self, request):
+        #-model -> ordem inversa 
+        cars = Car.objects.all().order_by('model')
+        search = request.GET.get('search')
+        
+        if search:
+            #icontains ignora upercase ou lowercase, considera tudo igualmente
+            cars = Car.objects.filter(model__icontains=search)
+
+        return render(
+            request, 
+            'cars.html', 
+            #dados sendo passados para o template
+            #esta seria a lista dos carros mostradas para o usuário
+            {'cars': cars}
+        )
+
 
 
 def new_car_view(request):
