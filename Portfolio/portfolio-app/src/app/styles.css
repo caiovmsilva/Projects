@@ -1,0 +1,24 @@
+/* CSS HEX */
+:root{
+    --eerie-black: #1E1E1Fff;
+    --dark-goldenrod: #BC8F34ff;
+    --jet: #2C2C2Cff;
+    --black-olive: #3D3D3Bff;
+    --eerie-black-2: #1E1E1Fff;
+    --silver: #CCCCCCff;
+    --eerie-black-3: #1E1E1Eff;
+    --davys-gray: #51504Fff;
+    --eerie-black-4: #1E1E1Eff;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    text-decoration: none;
+}
