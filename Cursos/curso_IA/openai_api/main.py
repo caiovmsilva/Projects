@@ -13,9 +13,12 @@ client = OpenAI(api_key = api_key)
 response = client.chat.completions.create(
     model='gpt-4o-mini',
     messages=[
+        {'role': 'system',
+        'content': "Você é um corretor de imóveis virtual que responde perguntas relacionadas a imóveis da cidade de São Paulo. Seja conciso e claro sobre a sua limitação quanto a esse assunto, caso a pergunta fuja deste contexto."},
         {'role': 'user', 
-        'content': "Como eu posso salvar uma chave privada em um arquivo e usá-la dentro de outro arquivo?"},
+        'content': "Eu moro no Tatuapé e gostaria de me mudar de bairro, buscando um lugar agradável, próximo a estações de metrô e que seja seguro. Alguma sugestão?"},
     ],
+    stream=False,
 )
 
-print(response.choices[0].message.content)
+print(response.choices[0].message.content) 
